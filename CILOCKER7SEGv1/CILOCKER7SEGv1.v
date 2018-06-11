@@ -1,0 +1,344 @@
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+//// 	Projeto para disciplina de Circuitos L�gicos II		////
+//// 														////
+////						CI-LOCKER						////
+////														////
+////	Discentes: Di�genes									////
+////			   Lucas Jurani Lustosa Lopes				////
+////			   Marc�lio J�nior							////
+////														////
+////	Professor: Eudisley Anjos							////
+////														////
+////    Descri��o: Prot�tipo de fechadura utilizando  		////
+////			   FPGA Altera DE-2 e linguagem Verilog		////
+////			   para o Centro de Inform�tica.			////
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+
+
+
+// M�dulo para declara��o das vari�ves e afins
+
+module CILOCKER7SEGv1(
+output reg [17:0] LEDR,
+output reg [7:0] LEDG,
+output reg LEDG8,
+output reg [6:0] HEX0, HEX1, HEX2, HEX3, HEX4, HEX6, HEX7,
+input validar,reset,CLOCK_50,
+input [3:0]SW
+);
+
+always @(CLOCK_50) begin
+	HEX6 = 7'b1111001;
+	HEX7 = 7'b1000110;
+end
+
+// Registradores
+reg apaga;
+reg count = 7'b0000000;
+
+// Instru��es para impress�o no display 7 segmentos para senha (Correta / Errada)
+
+/*
+always @ (validar) begin
+	if(validar == 0) begin
+		case(SW)
+			4'b1001 : begin
+				count = count + 1;
+			end
+		endcase
+	end
+end
+*/
+/*
+always @ (*) begin	
+		case(count)
+			0 : begin
+				HEX4 = 7'b0000001;
+			end
+			
+			1 : begin
+				HEX4 = 7'b1001111;
+			end
+			2 : begin
+				HEX4 = 7'b0010010;
+			end
+			3 : begin
+				HEX4 = 7'b0000110;
+			end
+			4 : begin
+				HEX4 = 7'b1001100;
+			end
+			5 : begin
+				HEX4 = 7'b0100100;
+			end
+			6 : begin
+				HEX4 = 7'b0100000;
+			end
+			7 : begin
+				HEX4 = 7'b0001111;
+			end
+			8 : begin
+				HEX4 = 7'b0000000;
+			end
+			9 : begin
+				HEX4 = 7'b0000100;
+			end
+		endcase
+end
+*/
+			
+always @ (validar or reset) begin	
+
+	if(apaga == 0)begin
+				HEX4 = 7'b1111111;
+				HEX3 = 7'b1111111;
+				HEX2 = 7'b1111111;
+				HEX1 = 7'b1111111;
+				HEX0 = 7'b1111111;
+				apaga = 1;
+			end								
+	
+	if(validar == 0) begin											
+		HEX3 = (SW [3:0] == 4'b1001) ?  7'b0001100 : 7'b0000110;	//
+		HEX2 = (SW [3:0] == 4'b1001) ?  7'b0001000 : 7'b0001000;	// Condi��o para que determinado letra apare�a
+		HEX1 = (SW [3:0] == 4'b1001) ?  7'b0010010 : 7'b0001000;	// nos display 7seg.
+		HEX0 = (SW [3:0] == 4'b1001) ?  7'b0010010 : 7'b1000000;	//
+		count = count + 1;	
+		end															
+	if (reset == 0) begin											
+		HEX3 = 7'b1111111;											//
+		HEX2 = 7'b1111111;											// Condi��o atrelada ao bot�o reset para
+		HEX1 = 7'b1111111;											// zerar o display 7seg.
+		HEX0 = 7'b1111111;											//
+		end
+end
+	
+	
+// Always para condi��o de senha com estrutura "CASE"
+
+always @ (validar or reset) begin
+ 	if(validar == 0) begin
+		case(SW) 
+			4'b0000: begin 
+				LEDG[0] = 1; LEDR[1] = 1; LEDR[10] = 1; 
+				LEDG[1] = 1; LEDR[2] = 1; LEDR[11] = 1; 
+				LEDG[2] = 0; LEDR[3] = 1; LEDR[12] = 1; 
+				LEDG[3] = 0; LEDR[4] = 1; LEDR[13] = 1; 
+				LEDG[4] = 0; LEDR[5] = 1; LEDR[14] = 1; 
+				LEDG[5] = 0; LEDR[6] = 1; LEDR[15] = 1; 
+				LEDG[6] = 0; LEDR[7] = 1; LEDR[16] = 1; 
+				LEDG[7] = 0; LEDR[8] = 1; LEDR[17] = 1; 
+				LEDR[0] = 1; LEDR[9] = 1; LEDG8    = 0;  
+			end 
+			
+			4'b0001: begin 
+				LEDG[0] = 1; LEDR[1] = 1; LEDR[10] = 1; 
+				LEDG[1] = 1; LEDR[2] = 1; LEDR[11] = 1; 
+				LEDG[2] = 0; LEDR[3] = 1; LEDR[12] = 1; 
+				LEDG[3] = 0; LEDR[4] = 1; LEDR[13] = 1; 
+				LEDG[4] = 0; LEDR[5] = 1; LEDR[14] = 1; 
+				LEDG[5] = 0; LEDR[6] = 1; LEDR[15] = 1; 
+				LEDG[6] = 0; LEDR[7] = 1; LEDR[16] = 1; 
+				LEDG[7] = 0; LEDR[8] = 1; LEDR[17] = 1; 
+				LEDR[0] = 1;  LEDR[9] = 1; LEDG8 = 0;
+			end 
+			
+			4'b0010:begin 
+				LEDG[0] = 1; LEDR[1] = 1; LEDR[10] = 1; 
+				LEDG[1] = 1; LEDR[2] = 1; LEDR[11] = 1; 
+				LEDG[2] = 0; LEDR[3] = 1; LEDR[12] = 1; 
+				LEDG[3] = 0; LEDR[4] = 1; LEDR[13] = 1; 
+				LEDG[4] = 0; LEDR[5] = 1; LEDR[14] = 1; 
+				LEDG[5] = 0; LEDR[6] = 1; LEDR[15] = 1; 
+				LEDG[6] = 0; LEDR[7] = 1; LEDR[16] = 1; 
+				LEDG[7] = 0; LEDR[8] = 1; LEDR[17] = 1; 
+				LEDR[0] = 1;  LEDR[9] = 1; LEDG8 = 0; 
+			end 
+			
+			4'b0011: begin 
+				LEDG[0] = 1; LEDR[1] = 1; LEDR[10] = 1; 
+				LEDG[1] = 1; LEDR[2] = 1; LEDR[11] = 1; 
+				LEDG[2] = 0; LEDR[3] = 1; LEDR[12] = 1; 
+				LEDG[3] = 0; LEDR[4] = 1; LEDR[13] = 1; 
+				LEDG[4] = 0; LEDR[5] = 1; LEDR[14] = 1; 
+				LEDG[5] = 0; LEDR[6] = 1; LEDR[15] = 1; 
+				LEDG[6] = 0; LEDR[7] = 1; LEDR[16] = 1; 
+				LEDG[7] = 0; LEDR[8] = 1; LEDR[17] = 1; 
+				LEDR[0] = 1;  LEDR[9] = 1; LEDG8 = 0;
+			end 
+			
+			4'b0100: begin 
+				LEDG[0] = 1; LEDR[1] = 1; LEDR[10] = 1; 
+				LEDG[1] = 1; LEDR[2] = 1; LEDR[11] = 1; 
+				LEDG[2] = 0; LEDR[3] = 1; LEDR[12] = 1; 
+				LEDG[3] = 0; LEDR[4] = 1; LEDR[13] = 1; 
+				LEDG[4] = 0; LEDR[5] = 1; LEDR[14] = 1; 
+				LEDG[5] = 0; LEDR[6] = 1; LEDR[15] = 1; 
+				LEDG[6] = 0; LEDR[7] = 1; LEDR[16] = 1; 
+				LEDG[7] = 0; LEDR[8] = 1; LEDR[17] = 1; 
+				LEDR[0] = 1;  LEDR[9] = 1; LEDG8 = 0;
+			end 
+			
+			4'b0101: begin 
+				LEDG[0] = 1; LEDR[1] = 1; LEDR[10] = 1; 
+				LEDG[1] = 1; LEDR[2] = 1; LEDR[11] = 1; 
+				LEDG[2] = 0; LEDR[3] = 1; LEDR[12] = 1; 
+				LEDG[3] = 0; LEDR[4] = 1; LEDR[13] = 1; 
+				LEDG[4] = 0; LEDR[5] = 1; LEDR[14] = 1; 
+				LEDG[5] = 0; LEDR[6] = 1; LEDR[15] = 1; 
+				LEDG[6] = 0; LEDR[7] = 1; LEDR[16] = 1; 
+				LEDG[7] = 0; LEDR[8] = 1; LEDR[17] = 1; 
+				LEDR[0] = 1;  LEDR[9] = 1;  LEDG8 = 0;
+			end 
+			
+			4'b0110: begin 
+				LEDG[0] = 1; LEDR[1] = 1; LEDR[10] = 1; 
+				LEDG[1] = 1; LEDR[2] = 1; LEDR[11] = 1; 
+				LEDG[2] = 0; LEDR[3] = 1; LEDR[12] = 1; 
+				LEDG[3] = 0; LEDR[4] = 1; LEDR[13] = 1; 
+				LEDG[4] = 0; LEDR[5] = 1; LEDR[14] = 1; 
+				LEDG[5] = 0; LEDR[6] = 1; LEDR[15] = 1; 
+				LEDG[6] = 0; LEDR[7] = 1; LEDR[16] = 1; 
+				LEDG[7] = 0; LEDR[8] = 1; LEDR[17] = 1; 
+				LEDR[0] = 1;  LEDR[9] = 1; LEDG8 = 0;
+		 	end 
+			
+			4'b0111:begin 
+				LEDG[0] = 1; LEDR[1] = 1; LEDR[10] = 1; 
+				LEDG[1] = 1; LEDR[2] = 1; LEDR[11] = 1; 
+				LEDG[2] = 0; LEDR[3] = 1; LEDR[12] = 1; 
+				LEDG[3] = 0; LEDR[4] = 1; LEDR[13] = 1; 
+				LEDG[4] = 0; LEDR[5] = 1; LEDR[14] = 1; 
+				LEDG[5] = 0; LEDR[6] = 1; LEDR[15] = 1; 
+				LEDG[6] = 0; LEDR[7] = 1; LEDR[16] = 1; 
+				LEDG[7] = 0; LEDR[8] = 1; LEDR[17] = 1; 
+				LEDR[0] = 1;  LEDR[9] = 1; LEDG8 = 0;
+			end 
+			
+			4'b1000: begin 
+				LEDG[0] = 1; LEDR[1] = 1; LEDR[10] = 1; 
+				LEDG[1] = 1; LEDR[2] = 1; LEDR[11] = 1; 
+				LEDG[2] = 0; LEDR[3] = 1; LEDR[12] = 1; 
+				LEDG[3] = 0; LEDR[4] = 1; LEDR[13] = 1; 
+				LEDG[4] = 0; LEDR[5] = 1; LEDR[14] = 1; 
+				LEDG[5] = 0; LEDR[6] = 1; LEDR[15] = 1; 
+				LEDG[6] = 0; LEDR[7] = 1; LEDR[16] = 1; 
+				LEDG[7] = 0; LEDR[8] = 1; LEDR[17] = 1; 
+				LEDR[0] = 1;  LEDR[9] = 1; LEDG8 = 0;
+			end 
+			
+			// --------------------CONDI��O CORRETA------------------//
+			4'b1001: begin
+				LEDG[0] = 1; LEDR[1] = 0; LEDR[10] = 0; 			//
+				LEDG[1] = 1; LEDR[2] = 0; LEDR[11] = 0; 			//
+				LEDG[2] = 1; LEDR[3] = 0; LEDR[12] = 0; 			//
+				LEDG[3] = 1; LEDR[4] = 0; LEDR[13] = 0; 			//
+				LEDG[4] = 1; LEDR[5] = 0; LEDR[14] = 0; 			//
+				LEDG[5] = 1; LEDR[6] = 0; LEDR[15] = 0; 			//
+				LEDG[6] = 1; LEDR[7] = 0; LEDR[16] = 0; 			//
+				LEDG[7] = 1; LEDR[8] = 0; LEDR[17] = 0; 			//
+				LEDR[0] = 0; LEDR[9] = 0; LEDG8    = 0;				//
+			end
+			// --------------------CONDI��O CORRETA------------------//
+			
+			4'b1010: begin 
+				LEDG[0] = 1; LEDR[1] = 1; LEDR[10] = 1; 
+				LEDG[1] = 1; LEDR[2] = 1; LEDR[11] = 1; 
+				LEDG[2] = 0; LEDR[3] = 1; LEDR[12] = 1; 
+				LEDG[3] = 0; LEDR[4] = 1; LEDR[13] = 1; 
+				LEDG[4] = 0; LEDR[5] = 1; LEDR[14] = 1; 
+				LEDG[5] = 0; LEDR[6] = 1; LEDR[15] = 1; 
+				LEDG[6] = 0; LEDR[7] = 1; LEDR[16] = 1; 
+				LEDG[7] = 0; LEDR[8] = 1; LEDR[17] = 1; 
+				LEDR[0] = 1;  LEDR[9] = 1; LEDG8 = 0;
+				
+			end 
+			
+			4'b1011:begin 
+				LEDG[0] = 1; LEDR[1] = 1; LEDR[10] = 1; 
+				LEDG[1] = 1; LEDR[2] = 1; LEDR[11] = 1; 
+				LEDG[2] = 0; LEDR[3] = 1; LEDR[12] = 1; 
+				LEDG[3] = 0; LEDR[4] = 1; LEDR[13] = 1; 
+				LEDG[4] = 0; LEDR[5] = 1; LEDR[14] = 1; 
+				LEDG[5] = 0; LEDR[6] = 1; LEDR[15] = 1; 
+				LEDG[6] = 0; LEDR[7] = 1; LEDR[16] = 1; 
+				LEDG[7] = 0; LEDR[8] = 1; LEDR[17] = 1; 
+				LEDR[0] = 1;  LEDR[9] = 1; LEDG8 = 0;
+				
+			end 
+						
+			4'b1100: begin 
+				LEDG[0] = 1; LEDR[1] = 1; LEDR[10] = 1; 
+				LEDG[1] = 1; LEDR[2] = 1; LEDR[11] = 1; 
+				LEDG[2] = 0; LEDR[3] = 1; LEDR[12] = 1; 
+				LEDG[3] = 0; LEDR[4] = 1; LEDR[13] = 1; 
+				LEDG[4] = 0; LEDR[5] = 1; LEDR[14] = 1; 
+				LEDG[5] = 0; LEDR[6] = 1; LEDR[15] = 1; 
+				LEDG[6] = 0; LEDR[7] = 1; LEDR[16] = 1; 
+				LEDG[7] = 0; LEDR[8] = 1; LEDR[17] = 1; 
+				LEDR[0] = 1;  LEDR[9] = 1; LEDG8 = 0;
+				
+			end 
+			
+			4'b1101:begin 
+				LEDG[0] = 1; LEDR[1] = 1; LEDR[10] = 1; 
+				LEDG[1] = 1; LEDR[2] = 1; LEDR[11] = 1; 
+				LEDG[2] = 0; LEDR[3] = 1; LEDR[12] = 1; 
+				LEDG[3] = 0; LEDR[4] = 1; LEDR[13] = 1; 
+				LEDG[4] = 0; LEDR[5] = 1; LEDR[14] = 1; 
+				LEDG[5] = 0; LEDR[6] = 1; LEDR[15] = 1; 
+				LEDG[6] = 0; LEDR[7] = 1; LEDR[16] = 1; 
+				LEDG[7] = 0; LEDR[8] = 1; LEDR[17] = 1; 
+				LEDR[0] = 1;  LEDR[9] = 1; LEDG8 = 0;
+				
+			end 
+			
+			4'b1110: begin 
+				LEDG[0] = 1; LEDR[1] = 1; LEDR[10] = 1; 
+				LEDG[1] = 1; LEDR[2] = 1; LEDR[11] = 1; 
+				LEDG[2] = 0; LEDR[3] = 1; LEDR[12] = 1; 
+				LEDG[3] = 0; LEDR[4] = 1; LEDR[13] = 1; 
+				LEDG[4] = 0; LEDR[5] = 1; LEDR[14] = 1; 
+				LEDG[5] = 0; LEDR[6] = 1; LEDR[15] = 1; 
+				LEDG[6] = 0; LEDR[7] = 1; LEDR[16] = 1; 
+				LEDG[7] = 0; LEDR[8] = 1; LEDR[17] = 1; 
+				LEDR[0] = 1;  LEDR[9] = 1; LEDG8 = 0;
+				
+			end 
+			
+			4'b1111:begin 
+				LEDG[0] = 1; LEDR[1] = 1; LEDR[10] = 1; 
+				LEDG[1] = 1; LEDR[2] = 1; LEDR[11] = 1; 
+				LEDG[2] = 0; LEDR[3] = 1; LEDR[12] = 1; 
+				LEDG[3] = 0; LEDR[4] = 1; LEDR[13] = 1; 
+				LEDG[4] = 0; LEDR[5] = 1; LEDR[14] = 1; 
+				LEDG[5] = 0; LEDR[6] = 1; LEDR[15] = 1; 
+				LEDG[6] = 0; LEDR[7] = 1; LEDR[16] = 1; 
+				LEDG[7] = 0; LEDR[8] = 1; LEDR[17] = 1; 
+				LEDR[0] = 1;  LEDR[9] = 1; LEDG8 = 0;
+				
+			end 
+		endcase // FIM DO CASE
+	end // FIM DO IF
+	
+	else if(reset == 0) begin			
+		LEDG[0] = 1; LEDR[1] = 1; LEDR[10] = 0; 
+		LEDG[1] = 1; LEDR[2] = 1; LEDR[11] = 0; 
+		LEDG[2] = 0; LEDR[3] = 1; LEDR[12] = 0; 
+		LEDG[3] = 0; LEDR[4] = 0; LEDR[13] = 0; 
+		LEDG[4] = 0; LEDR[5] = 0; LEDR[14] = 0; 
+		LEDG[5] = 0; LEDR[6] = 0; LEDR[15] = 0; 
+		LEDG[6] = 1; LEDR[7] = 0; LEDR[16] = 0; 
+		LEDG[7] = 1; LEDR[8] = 0; LEDR[17] = 0; 
+		LEDR[0] = 1;  LEDR[9] = 0; LEDG8 = 1;
+	end // FIM DO ELSE-IF
+
+end // FIM DO ALWAYS
+
+		
+endmodule			
+	
+	
+  

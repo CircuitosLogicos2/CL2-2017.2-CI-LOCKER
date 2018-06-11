@@ -1,0 +1,62 @@
+Quartus II
+Version 9.1 Build 222 10/21/2009 SJ Web Edition
+11
+1000
+OFF
+OFF
+OFF
+ON
+ON
+ON
+FV_OFF
+Level2
+0
+0
+VRSM_ON
+VHSM_ON
+altsyn.lmf
+-- Start Library Paths --
+-- End Library Paths --
+-- Start VHDL Libraries --
+-- End VHDL Libraries --
+# entity
+CILOCKER7SEGv1
+# storage
+db|CILOCKER7SEGv1.(0).cnf
+db|CILOCKER7SEGv1.(0).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+cilocker7segv1.v
+79af5dc1238eecf44be548893444de2
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+|
+}
+# lmf
+|altera|91|quartus|lmf|altsyn.lmf
+bbbb84af4e7019201bb1fc50d2957c
+# macro_sequence
+
+# end
+# complete
+

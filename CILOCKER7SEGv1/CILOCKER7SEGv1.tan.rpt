@@ -1,0 +1,373 @@
+Classic Timing Analyzer report for CILOCKER7SEGv1
+Mon Jun 11 13:48:38 2018
+Quartus II Version 9.1 Build 222 10/21/2009 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Timing Analyzer Summary
+  3. Timing Analyzer Settings
+  4. Clock Settings Summary
+  5. Parallel Compilation
+  6. tsu
+  7. tco
+  8. th
+  9. Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2009 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Summary                                                                                                                   ;
++------------------------------+-------+---------------+-------------+---------------+---------------+------------+----------+--------------+
+; Type                         ; Slack ; Required Time ; Actual Time ; From          ; To            ; From Clock ; To Clock ; Failed Paths ;
++------------------------------+-------+---------------+-------------+---------------+---------------+------------+----------+--------------+
+; Worst-case tsu               ; N/A   ; None          ; 2.667 ns    ; validar       ; LEDR[0]$latch ; --         ; validar  ; 0            ;
+; Worst-case tco               ; N/A   ; None          ; 12.094 ns   ; LEDR[4]$latch ; LEDR[14]      ; reset      ; --       ; 0            ;
+; Worst-case th                ; N/A   ; None          ; 2.610 ns    ; SW[2]         ; LEDG[2]$latch ; --         ; reset    ; 0            ;
+; Total number of failed paths ;       ;               ;             ;               ;               ;            ;          ; 0            ;
++------------------------------+-------+---------------+-------------+---------------+---------------+------------+----------+--------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Settings                                                                                                                            ;
++------------------------------------------------------------------------------------------------------+--------------------+------+----+-------------+
+; Option                                                                                               ; Setting            ; From ; To ; Entity Name ;
++------------------------------------------------------------------------------------------------------+--------------------+------+----+-------------+
+; Device Name                                                                                          ; EP2C35F672C6       ;      ;    ;             ;
+; Timing Models                                                                                        ; Final              ;      ;    ;             ;
+; Default hold multicycle                                                                              ; Same as Multicycle ;      ;    ;             ;
+; Cut paths between unrelated clock domains                                                            ; On                 ;      ;    ;             ;
+; Cut off read during write signal paths                                                               ; On                 ;      ;    ;             ;
+; Cut off feedback from I/O pins                                                                       ; On                 ;      ;    ;             ;
+; Report Combined Fast/Slow Timing                                                                     ; Off                ;      ;    ;             ;
+; Ignore Clock Settings                                                                                ; Off                ;      ;    ;             ;
+; Analyze latches as synchronous elements                                                              ; On                 ;      ;    ;             ;
+; Enable Recovery/Removal analysis                                                                     ; Off                ;      ;    ;             ;
+; Enable Clock Latency                                                                                 ; Off                ;      ;    ;             ;
+; Use TimeQuest Timing Analyzer                                                                        ; Off                ;      ;    ;             ;
+; Minimum Core Junction Temperature                                                                    ; 0                  ;      ;    ;             ;
+; Maximum Core Junction Temperature                                                                    ; 85                 ;      ;    ;             ;
+; Number of source nodes to report per destination node                                                ; 10                 ;      ;    ;             ;
+; Number of destination nodes to report                                                                ; 10                 ;      ;    ;             ;
+; Number of paths to report                                                                            ; 200                ;      ;    ;             ;
+; Report Minimum Timing Checks                                                                         ; Off                ;      ;    ;             ;
+; Use Fast Timing Models                                                                               ; Off                ;      ;    ;             ;
+; Report IO Paths Separately                                                                           ; Off                ;      ;    ;             ;
+; Perform Multicorner Analysis                                                                         ; On                 ;      ;    ;             ;
+; Reports the worst-case path for each clock domain and analysis                                       ; Off                ;      ;    ;             ;
+; Reports worst-case timing paths for each clock domain and analysis                                   ; On                 ;      ;    ;             ;
+; Specifies the maximum number of worst-case timing paths to report for each clock domain and analysis ; 100                ;      ;    ;             ;
+; Removes common clock path pessimism (CCPP) during slack computation                                  ; Off                ;      ;    ;             ;
+; Output I/O Timing Endpoint                                                                           ; Near End           ;      ;    ;             ;
++------------------------------------------------------------------------------------------------------+--------------------+------+----+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Settings Summary                                                                                                                                                             ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+; Clock Node Name ; Clock Setting Name ; Type     ; Fmax Requirement ; Early Latency ; Late Latency ; Based on ; Multiply Base Fmax by ; Divide Base Fmax by ; Offset ; Phase offset ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+; validar         ;                    ; User Pin ; None             ; 0.000 ns      ; 0.000 ns     ; --       ; N/A                   ; N/A                 ; N/A    ;              ;
+; reset           ;                    ; User Pin ; None             ; 0.000 ns      ; 0.000 ns     ; --       ; N/A                   ; N/A                 ; N/A    ;              ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 4      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++------------------------------------------------------------------------+
+; tsu                                                                    ;
++-------+--------------+------------+---------+---------------+----------+
+; Slack ; Required tsu ; Actual tsu ; From    ; To            ; To Clock ;
++-------+--------------+------------+---------+---------------+----------+
+; N/A   ; None         ; 2.667 ns   ; validar ; LEDR[0]$latch ; validar  ;
+; N/A   ; None         ; 2.666 ns   ; validar ; LEDG[6]$latch ; validar  ;
+; N/A   ; None         ; 2.525 ns   ; validar ; LEDR[4]$latch ; validar  ;
+; N/A   ; None         ; 2.294 ns   ; validar ; LEDG[2]$latch ; validar  ;
+; N/A   ; None         ; 2.138 ns   ; validar ; LEDR[0]$latch ; reset    ;
+; N/A   ; None         ; 2.137 ns   ; validar ; LEDG[6]$latch ; reset    ;
+; N/A   ; None         ; 2.020 ns   ; SW[3]   ; HEX0[6]$latch ; validar  ;
+; N/A   ; None         ; 2.012 ns   ; SW[3]   ; HEX0[1]$latch ; validar  ;
+; N/A   ; None         ; 1.996 ns   ; validar ; LEDR[4]$latch ; reset    ;
+; N/A   ; None         ; 1.842 ns   ; SW[1]   ; HEX0[6]$latch ; validar  ;
+; N/A   ; None         ; 1.834 ns   ; SW[1]   ; HEX0[1]$latch ; validar  ;
+; N/A   ; None         ; 1.765 ns   ; validar ; LEDG[2]$latch ; reset    ;
+; N/A   ; None         ; 1.686 ns   ; SW[0]   ; HEX0[6]$latch ; validar  ;
+; N/A   ; None         ; 1.678 ns   ; SW[0]   ; HEX0[1]$latch ; validar  ;
+; N/A   ; None         ; 1.564 ns   ; SW[2]   ; HEX0[6]$latch ; validar  ;
+; N/A   ; None         ; 1.556 ns   ; SW[2]   ; HEX0[1]$latch ; validar  ;
+; N/A   ; None         ; -0.570 ns  ; SW[3]   ; LEDG[6]$latch ; validar  ;
+; N/A   ; None         ; -0.574 ns  ; SW[3]   ; LEDR[0]$latch ; validar  ;
+; N/A   ; None         ; -0.711 ns  ; SW[3]   ; LEDR[4]$latch ; validar  ;
+; N/A   ; None         ; -0.748 ns  ; SW[1]   ; LEDG[6]$latch ; validar  ;
+; N/A   ; None         ; -0.752 ns  ; SW[1]   ; LEDR[0]$latch ; validar  ;
+; N/A   ; None         ; -0.889 ns  ; SW[1]   ; LEDR[4]$latch ; validar  ;
+; N/A   ; None         ; -0.904 ns  ; SW[0]   ; LEDG[6]$latch ; validar  ;
+; N/A   ; None         ; -0.908 ns  ; SW[0]   ; LEDR[0]$latch ; validar  ;
+; N/A   ; None         ; -0.947 ns  ; SW[3]   ; LEDG[2]$latch ; validar  ;
+; N/A   ; None         ; -1.026 ns  ; SW[2]   ; LEDG[6]$latch ; validar  ;
+; N/A   ; None         ; -1.030 ns  ; SW[2]   ; LEDR[0]$latch ; validar  ;
+; N/A   ; None         ; -1.045 ns  ; SW[0]   ; LEDR[4]$latch ; validar  ;
+; N/A   ; None         ; -1.099 ns  ; SW[3]   ; LEDG[6]$latch ; reset    ;
+; N/A   ; None         ; -1.103 ns  ; SW[3]   ; LEDR[0]$latch ; reset    ;
+; N/A   ; None         ; -1.125 ns  ; SW[1]   ; LEDG[2]$latch ; validar  ;
+; N/A   ; None         ; -1.167 ns  ; SW[2]   ; LEDR[4]$latch ; validar  ;
+; N/A   ; None         ; -1.240 ns  ; SW[3]   ; LEDR[4]$latch ; reset    ;
+; N/A   ; None         ; -1.277 ns  ; SW[1]   ; LEDG[6]$latch ; reset    ;
+; N/A   ; None         ; -1.281 ns  ; SW[0]   ; LEDG[2]$latch ; validar  ;
+; N/A   ; None         ; -1.281 ns  ; SW[1]   ; LEDR[0]$latch ; reset    ;
+; N/A   ; None         ; -1.403 ns  ; SW[2]   ; LEDG[2]$latch ; validar  ;
+; N/A   ; None         ; -1.418 ns  ; SW[1]   ; LEDR[4]$latch ; reset    ;
+; N/A   ; None         ; -1.433 ns  ; SW[0]   ; LEDG[6]$latch ; reset    ;
+; N/A   ; None         ; -1.437 ns  ; SW[0]   ; LEDR[0]$latch ; reset    ;
+; N/A   ; None         ; -1.476 ns  ; SW[3]   ; LEDG[2]$latch ; reset    ;
+; N/A   ; None         ; -1.555 ns  ; SW[2]   ; LEDG[6]$latch ; reset    ;
+; N/A   ; None         ; -1.559 ns  ; SW[2]   ; LEDR[0]$latch ; reset    ;
+; N/A   ; None         ; -1.574 ns  ; SW[0]   ; LEDR[4]$latch ; reset    ;
+; N/A   ; None         ; -1.654 ns  ; SW[1]   ; LEDG[2]$latch ; reset    ;
+; N/A   ; None         ; -1.696 ns  ; SW[2]   ; LEDR[4]$latch ; reset    ;
+; N/A   ; None         ; -1.810 ns  ; SW[0]   ; LEDG[2]$latch ; reset    ;
+; N/A   ; None         ; -1.932 ns  ; SW[2]   ; LEDG[2]$latch ; reset    ;
++-------+--------------+------------+---------+---------------+----------+
+
+
++---------------------------------------------------------------------------+
+; tco                                                                       ;
++-------+--------------+------------+---------------+----------+------------+
+; Slack ; Required tco ; Actual tco ; From          ; To       ; From Clock ;
++-------+--------------+------------+---------------+----------+------------+
+; N/A   ; None         ; 12.094 ns  ; LEDR[4]$latch ; LEDR[17] ; reset      ;
+; N/A   ; None         ; 12.094 ns  ; LEDR[4]$latch ; LEDR[16] ; reset      ;
+; N/A   ; None         ; 12.094 ns  ; LEDR[4]$latch ; LEDR[15] ; reset      ;
+; N/A   ; None         ; 12.094 ns  ; LEDR[4]$latch ; LEDR[14] ; reset      ;
+; N/A   ; None         ; 11.859 ns  ; LEDR[4]$latch ; LEDR[13] ; reset      ;
+; N/A   ; None         ; 11.859 ns  ; LEDR[4]$latch ; LEDR[12] ; reset      ;
+; N/A   ; None         ; 11.849 ns  ; LEDR[4]$latch ; LEDR[11] ; reset      ;
+; N/A   ; None         ; 11.849 ns  ; LEDR[4]$latch ; LEDR[10] ; reset      ;
+; N/A   ; None         ; 11.591 ns  ; LEDR[4]$latch ; LEDR[9]  ; reset      ;
+; N/A   ; None         ; 11.581 ns  ; LEDR[4]$latch ; LEDR[8]  ; reset      ;
+; N/A   ; None         ; 11.565 ns  ; LEDR[4]$latch ; LEDR[17] ; validar    ;
+; N/A   ; None         ; 11.565 ns  ; LEDR[4]$latch ; LEDR[16] ; validar    ;
+; N/A   ; None         ; 11.565 ns  ; LEDR[4]$latch ; LEDR[15] ; validar    ;
+; N/A   ; None         ; 11.565 ns  ; LEDR[4]$latch ; LEDR[14] ; validar    ;
+; N/A   ; None         ; 11.330 ns  ; LEDR[4]$latch ; LEDR[13] ; validar    ;
+; N/A   ; None         ; 11.330 ns  ; LEDR[4]$latch ; LEDR[12] ; validar    ;
+; N/A   ; None         ; 11.320 ns  ; LEDR[4]$latch ; LEDR[11] ; validar    ;
+; N/A   ; None         ; 11.320 ns  ; LEDR[4]$latch ; LEDR[10] ; validar    ;
+; N/A   ; None         ; 11.062 ns  ; LEDR[4]$latch ; LEDR[9]  ; validar    ;
+; N/A   ; None         ; 11.052 ns  ; LEDR[4]$latch ; LEDR[8]  ; validar    ;
+; N/A   ; None         ; 10.605 ns  ; LEDG[2]$latch ; LEDG[4]  ; reset      ;
+; N/A   ; None         ; 10.595 ns  ; LEDG[2]$latch ; LEDG[5]  ; reset      ;
+; N/A   ; None         ; 10.565 ns  ; LEDG[2]$latch ; LEDG[3]  ; reset      ;
+; N/A   ; None         ; 10.565 ns  ; LEDG[2]$latch ; LEDG[2]  ; reset      ;
+; N/A   ; None         ; 10.400 ns  ; LEDG[6]$latch ; LEDG[6]  ; reset      ;
+; N/A   ; None         ; 10.350 ns  ; LEDG[6]$latch ; LEDG[7]  ; reset      ;
+; N/A   ; None         ; 10.235 ns  ; LEDR[4]$latch ; LEDR[5]  ; reset      ;
+; N/A   ; None         ; 10.235 ns  ; LEDR[4]$latch ; LEDR[4]  ; reset      ;
+; N/A   ; None         ; 10.230 ns  ; LEDR[4]$latch ; LEDR[7]  ; reset      ;
+; N/A   ; None         ; 10.230 ns  ; LEDR[4]$latch ; LEDR[6]  ; reset      ;
+; N/A   ; None         ; 10.076 ns  ; LEDG[2]$latch ; LEDG[4]  ; validar    ;
+; N/A   ; None         ; 10.066 ns  ; LEDG[2]$latch ; LEDG[5]  ; validar    ;
+; N/A   ; None         ; 10.036 ns  ; LEDG[2]$latch ; LEDG[3]  ; validar    ;
+; N/A   ; None         ; 10.036 ns  ; LEDG[2]$latch ; LEDG[2]  ; validar    ;
+; N/A   ; None         ; 9.959 ns   ; LEDR[0]$latch ; LEDR[1]  ; reset      ;
+; N/A   ; None         ; 9.959 ns   ; LEDR[0]$latch ; LEDR[0]  ; reset      ;
+; N/A   ; None         ; 9.929 ns   ; LEDR[0]$latch ; LEDR[3]  ; reset      ;
+; N/A   ; None         ; 9.929 ns   ; LEDR[0]$latch ; LEDR[2]  ; reset      ;
+; N/A   ; None         ; 9.871 ns   ; LEDG[6]$latch ; LEDG[6]  ; validar    ;
+; N/A   ; None         ; 9.821 ns   ; LEDG[6]$latch ; LEDG[7]  ; validar    ;
+; N/A   ; None         ; 9.706 ns   ; LEDR[4]$latch ; LEDR[5]  ; validar    ;
+; N/A   ; None         ; 9.706 ns   ; LEDR[4]$latch ; LEDR[4]  ; validar    ;
+; N/A   ; None         ; 9.701 ns   ; LEDR[4]$latch ; LEDR[7]  ; validar    ;
+; N/A   ; None         ; 9.701 ns   ; LEDR[4]$latch ; LEDR[6]  ; validar    ;
+; N/A   ; None         ; 9.430 ns   ; LEDR[0]$latch ; LEDR[1]  ; validar    ;
+; N/A   ; None         ; 9.430 ns   ; LEDR[0]$latch ; LEDR[0]  ; validar    ;
+; N/A   ; None         ; 9.400 ns   ; LEDR[0]$latch ; LEDR[3]  ; validar    ;
+; N/A   ; None         ; 9.400 ns   ; LEDR[0]$latch ; LEDR[2]  ; validar    ;
+; N/A   ; None         ; 8.891 ns   ; HEX0[1]$latch ; HEX0[1]  ; validar    ;
+; N/A   ; None         ; 8.672 ns   ; HEX0[1]$latch ; HEX0[4]  ; validar    ;
+; N/A   ; None         ; 8.331 ns   ; HEX0[6]$latch ; HEX0[6]  ; validar    ;
+; N/A   ; None         ; 6.144 ns   ; HEX0[6]$latch ; HEX3[1]  ; validar    ;
+; N/A   ; None         ; 6.127 ns   ; HEX0[1]$latch ; HEX1[1]  ; validar    ;
+; N/A   ; None         ; 5.924 ns   ; HEX0[1]$latch ; HEX3[3]  ; validar    ;
+; N/A   ; None         ; 5.911 ns   ; HEX0[1]$latch ; HEX1[4]  ; validar    ;
+; N/A   ; None         ; 5.810 ns   ; HEX0[6]$latch ; HEX1[3]  ; validar    ;
++-------+--------------+------------+---------------+----------+------------+
+
+
++------------------------------------------------------------------------------+
+; th                                                                           ;
++---------------+-------------+-----------+---------+---------------+----------+
+; Minimum Slack ; Required th ; Actual th ; From    ; To            ; To Clock ;
++---------------+-------------+-----------+---------+---------------+----------+
+; N/A           ; None        ; 2.610 ns  ; SW[2]   ; LEDG[2]$latch ; reset    ;
+; N/A           ; None        ; 2.488 ns  ; SW[0]   ; LEDG[2]$latch ; reset    ;
+; N/A           ; None        ; 2.424 ns  ; SW[2]   ; LEDR[0]$latch ; reset    ;
+; N/A           ; None        ; 2.383 ns  ; SW[2]   ; LEDG[6]$latch ; reset    ;
+; N/A           ; None        ; 2.382 ns  ; SW[2]   ; LEDR[4]$latch ; reset    ;
+; N/A           ; None        ; 2.332 ns  ; SW[1]   ; LEDG[2]$latch ; reset    ;
+; N/A           ; None        ; 2.302 ns  ; SW[0]   ; LEDR[0]$latch ; reset    ;
+; N/A           ; None        ; 2.261 ns  ; SW[0]   ; LEDG[6]$latch ; reset    ;
+; N/A           ; None        ; 2.260 ns  ; SW[0]   ; LEDR[4]$latch ; reset    ;
+; N/A           ; None        ; 2.154 ns  ; SW[3]   ; LEDG[2]$latch ; reset    ;
+; N/A           ; None        ; 2.146 ns  ; SW[1]   ; LEDR[0]$latch ; reset    ;
+; N/A           ; None        ; 2.105 ns  ; SW[1]   ; LEDG[6]$latch ; reset    ;
+; N/A           ; None        ; 2.104 ns  ; SW[1]   ; LEDR[4]$latch ; reset    ;
+; N/A           ; None        ; 2.081 ns  ; SW[2]   ; LEDG[2]$latch ; validar  ;
+; N/A           ; None        ; 1.968 ns  ; SW[3]   ; LEDR[0]$latch ; reset    ;
+; N/A           ; None        ; 1.959 ns  ; SW[0]   ; LEDG[2]$latch ; validar  ;
+; N/A           ; None        ; 1.927 ns  ; SW[3]   ; LEDG[6]$latch ; reset    ;
+; N/A           ; None        ; 1.926 ns  ; SW[3]   ; LEDR[4]$latch ; reset    ;
+; N/A           ; None        ; 1.895 ns  ; SW[2]   ; LEDR[0]$latch ; validar  ;
+; N/A           ; None        ; 1.854 ns  ; SW[2]   ; LEDG[6]$latch ; validar  ;
+; N/A           ; None        ; 1.853 ns  ; SW[2]   ; LEDR[4]$latch ; validar  ;
+; N/A           ; None        ; 1.803 ns  ; SW[1]   ; LEDG[2]$latch ; validar  ;
+; N/A           ; None        ; 1.773 ns  ; SW[0]   ; LEDR[0]$latch ; validar  ;
+; N/A           ; None        ; 1.732 ns  ; SW[0]   ; LEDG[6]$latch ; validar  ;
+; N/A           ; None        ; 1.731 ns  ; SW[0]   ; LEDR[4]$latch ; validar  ;
+; N/A           ; None        ; 1.625 ns  ; SW[3]   ; LEDG[2]$latch ; validar  ;
+; N/A           ; None        ; 1.617 ns  ; SW[1]   ; LEDR[0]$latch ; validar  ;
+; N/A           ; None        ; 1.576 ns  ; SW[1]   ; LEDG[6]$latch ; validar  ;
+; N/A           ; None        ; 1.575 ns  ; SW[1]   ; LEDR[4]$latch ; validar  ;
+; N/A           ; None        ; 1.439 ns  ; SW[3]   ; LEDR[0]$latch ; validar  ;
+; N/A           ; None        ; 1.398 ns  ; SW[3]   ; LEDG[6]$latch ; validar  ;
+; N/A           ; None        ; 1.397 ns  ; SW[3]   ; LEDR[4]$latch ; validar  ;
+; N/A           ; None        ; -0.874 ns ; SW[2]   ; HEX0[6]$latch ; validar  ;
+; N/A           ; None        ; -0.877 ns ; SW[2]   ; HEX0[1]$latch ; validar  ;
+; N/A           ; None        ; -0.996 ns ; SW[0]   ; HEX0[6]$latch ; validar  ;
+; N/A           ; None        ; -0.999 ns ; SW[0]   ; HEX0[1]$latch ; validar  ;
+; N/A           ; None        ; -1.087 ns ; validar ; LEDG[2]$latch ; reset    ;
+; N/A           ; None        ; -1.152 ns ; SW[1]   ; HEX0[6]$latch ; validar  ;
+; N/A           ; None        ; -1.155 ns ; SW[1]   ; HEX0[1]$latch ; validar  ;
+; N/A           ; None        ; -1.273 ns ; validar ; LEDR[0]$latch ; reset    ;
+; N/A           ; None        ; -1.309 ns ; validar ; LEDG[6]$latch ; reset    ;
+; N/A           ; None        ; -1.310 ns ; validar ; LEDR[4]$latch ; reset    ;
+; N/A           ; None        ; -1.330 ns ; SW[3]   ; HEX0[6]$latch ; validar  ;
+; N/A           ; None        ; -1.333 ns ; SW[3]   ; HEX0[1]$latch ; validar  ;
+; N/A           ; None        ; -1.616 ns ; validar ; LEDG[2]$latch ; validar  ;
+; N/A           ; None        ; -1.802 ns ; validar ; LEDR[0]$latch ; validar  ;
+; N/A           ; None        ; -1.838 ns ; validar ; LEDG[6]$latch ; validar  ;
+; N/A           ; None        ; -1.839 ns ; validar ; LEDR[4]$latch ; validar  ;
++---------------+-------------+-----------+---------+---------------+----------+
+
+
++--------------------------+
+; Timing Analyzer Messages ;
++--------------------------+
+Info: *******************************************************************
+Info: Running Quartus II Classic Timing Analyzer
+    Info: Version 9.1 Build 222 10/21/2009 SJ Web Edition
+    Info: Processing started: Mon Jun 11 13:48:38 2018
+Info: Command: quartus_tan --read_settings_files=off --write_settings_files=off CILOCKER7SEGv1 -c CILOCKER7SEGv1 --timing_analysis_only
+Warning: Timing Analysis is analyzing one or more combinational loops as latches
+    Warning: Node "LEDR[0]$latch" is a latch
+    Warning: Node "LEDR[4]$latch" is a latch
+    Warning: Node "LEDG[2]$latch" is a latch
+    Warning: Node "LEDG[6]$latch" is a latch
+    Warning: Node "LEDG8$latch" is a latch
+    Warning: Node "HEX0[0]$latch" is a latch
+    Warning: Node "HEX0[1]$latch" is a latch
+    Warning: Node "HEX0[2]$latch" is a latch
+    Warning: Node "HEX0[3]$latch" is a latch
+    Warning: Node "HEX0[5]$latch" is a latch
+    Warning: Node "HEX0[6]$latch" is a latch
+    Warning: Node "HEX1[0]$latch" is a latch
+    Warning: Node "HEX1[2]$latch" is a latch
+    Warning: Node "HEX1[5]$latch" is a latch
+    Warning: Node "HEX1[6]$latch" is a latch
+    Warning: Node "HEX2[0]$latch" is a latch
+    Warning: Node "HEX2[1]$latch" is a latch
+    Warning: Node "HEX2[2]$latch" is a latch
+    Warning: Node "HEX2[4]$latch" is a latch
+    Warning: Node "HEX2[5]$latch" is a latch
+    Warning: Node "HEX2[6]$latch" is a latch
+    Warning: Node "HEX3[0]$latch" is a latch
+    Warning: Node "HEX3[4]$latch" is a latch
+    Warning: Node "HEX3[5]$latch" is a latch
+    Warning: Node "HEX3[6]$latch" is a latch
+Warning: Found pins functioning as undefined clocks and/or memory enables
+    Info: Assuming node "validar" is a latch enable. Will not compute fmax for this pin.
+    Info: Assuming node "reset" is a latch enable. Will not compute fmax for this pin.
+Warning: Found 1 node(s) in clock paths which may be acting as ripple and/or gated clocks -- node(s) analyzed as buffer(s) resulting in clock skew
+    Info: Detected gated clock "LEDR[17]~1" as buffer
+Info: tsu for register "LEDR[0]$latch" (data pin = "validar", clock pin = "validar") is 2.667 ns
+    Info: + Longest pin to register delay is 7.505 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.842 ns) = 0.842 ns; Loc. = PIN_N23; Fanout = 6; CLK Node = 'validar'
+        Info: 2: + IC(5.743 ns) + CELL(0.245 ns) = 6.830 ns; Loc. = LCCOMB_X64_Y5_N2; Fanout = 2; COMB Node = 'LEDR[3]~0'
+        Info: 3: + IC(0.255 ns) + CELL(0.420 ns) = 7.505 ns; Loc. = LCCOMB_X64_Y5_N6; Fanout = 4; REG Node = 'LEDR[0]$latch'
+        Info: Total cell delay = 1.507 ns ( 20.08 % )
+        Info: Total interconnect delay = 5.998 ns ( 79.92 % )
+    Info: + Micro setup delay of destination is 0.865 ns
+    Info: - Shortest clock path from clock "validar" to destination register is 5.703 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.842 ns) = 0.842 ns; Loc. = PIN_N23; Fanout = 6; CLK Node = 'validar'
+        Info: 2: + IC(1.678 ns) + CELL(0.150 ns) = 2.670 ns; Loc. = LCCOMB_X64_Y7_N28; Fanout = 1; COMB Node = 'LEDR[17]~1'
+        Info: 3: + IC(1.503 ns) + CELL(0.000 ns) = 4.173 ns; Loc. = CLKCTRL_G5; Fanout = 4; COMB Node = 'LEDR[17]~1clkctrl'
+        Info: 4: + IC(1.380 ns) + CELL(0.150 ns) = 5.703 ns; Loc. = LCCOMB_X64_Y5_N6; Fanout = 4; REG Node = 'LEDR[0]$latch'
+        Info: Total cell delay = 1.142 ns ( 20.02 % )
+        Info: Total interconnect delay = 4.561 ns ( 79.98 % )
+Info: tco from clock "reset" to destination pin "LEDR[17]" through register "LEDR[4]$latch" is 12.094 ns
+    Info: + Longest clock path from clock "reset" to source register is 6.232 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.862 ns) = 0.862 ns; Loc. = PIN_G26; Fanout = 23; CLK Node = 'reset'
+        Info: 2: + IC(2.062 ns) + CELL(0.275 ns) = 3.199 ns; Loc. = LCCOMB_X64_Y7_N28; Fanout = 1; COMB Node = 'LEDR[17]~1'
+        Info: 3: + IC(1.503 ns) + CELL(0.000 ns) = 4.702 ns; Loc. = CLKCTRL_G5; Fanout = 4; COMB Node = 'LEDR[17]~1clkctrl'
+        Info: 4: + IC(1.380 ns) + CELL(0.150 ns) = 6.232 ns; Loc. = LCCOMB_X64_Y5_N24; Fanout = 14; REG Node = 'LEDR[4]$latch'
+        Info: Total cell delay = 1.287 ns ( 20.65 % )
+        Info: Total interconnect delay = 4.945 ns ( 79.35 % )
+    Info: + Micro clock to output delay of source is 0.000 ns
+    Info: + Longest register to pin delay is 5.862 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LCCOMB_X64_Y5_N24; Fanout = 14; REG Node = 'LEDR[4]$latch'
+        Info: 2: + IC(3.064 ns) + CELL(2.798 ns) = 5.862 ns; Loc. = PIN_AD12; Fanout = 0; PIN Node = 'LEDR[17]'
+        Info: Total cell delay = 2.798 ns ( 47.73 % )
+        Info: Total interconnect delay = 3.064 ns ( 52.27 % )
+Info: th for register "LEDG[2]$latch" (data pin = "SW[2]", clock pin = "reset") is 2.610 ns
+    Info: + Longest clock path from clock "reset" to destination register is 6.389 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.862 ns) = 0.862 ns; Loc. = PIN_G26; Fanout = 23; CLK Node = 'reset'
+        Info: 2: + IC(2.062 ns) + CELL(0.275 ns) = 3.199 ns; Loc. = LCCOMB_X64_Y7_N28; Fanout = 1; COMB Node = 'LEDR[17]~1'
+        Info: 3: + IC(1.503 ns) + CELL(0.000 ns) = 4.702 ns; Loc. = CLKCTRL_G5; Fanout = 4; COMB Node = 'LEDR[17]~1clkctrl'
+        Info: 4: + IC(1.412 ns) + CELL(0.275 ns) = 6.389 ns; Loc. = LCCOMB_X64_Y5_N26; Fanout = 4; REG Node = 'LEDG[2]$latch'
+        Info: Total cell delay = 1.412 ns ( 22.10 % )
+        Info: Total interconnect delay = 4.977 ns ( 77.90 % )
+    Info: + Micro hold delay of destination is 0.000 ns
+    Info: - Shortest pin to register delay is 3.779 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.999 ns) = 0.999 ns; Loc. = PIN_P25; Fanout = 1; PIN Node = 'SW[2]'
+        Info: 2: + IC(1.576 ns) + CELL(0.150 ns) = 2.725 ns; Loc. = LCCOMB_X64_Y5_N0; Fanout = 4; COMB Node = 'Decoder0~0'
+        Info: 3: + IC(0.258 ns) + CELL(0.150 ns) = 3.133 ns; Loc. = LCCOMB_X64_Y5_N2; Fanout = 2; COMB Node = 'LEDR[3]~0'
+        Info: 4: + IC(0.258 ns) + CELL(0.388 ns) = 3.779 ns; Loc. = LCCOMB_X64_Y5_N26; Fanout = 4; REG Node = 'LEDG[2]$latch'
+        Info: Total cell delay = 1.687 ns ( 44.64 % )
+        Info: Total interconnect delay = 2.092 ns ( 55.36 % )
+Info: Quartus II Classic Timing Analyzer was successful. 0 errors, 28 warnings
+    Info: Peak virtual memory: 212 megabytes
+    Info: Processing ended: Mon Jun 11 13:48:39 2018
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:00
+
+
